@@ -2,6 +2,6 @@ import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
   Migrations.migrateTo('latest');
-
-  // code to run on server at startup
+  require('/imports/indexes/indexes.js');
+  SyncedCron.start();
 });
