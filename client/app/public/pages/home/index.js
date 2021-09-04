@@ -191,6 +191,24 @@ Template.publicPageHome.events({
 
     template.pagination.set('currentPage', 1);
     template.sorting.set(obj);
+  },
+  'click .brd-login': function (event, template) {
+    event.preventDefault();
+
+    FB.login(function (response) {
+      
+      const fbUserId = response.authResponse.userID;
+      const fbAccessToken = response.authResponse.accessToken;
+
+      FB.api(`/${fbUserId}/accounts`, 'GET', {
+        fields: 'name,access_token',
+        access_token: fbAccessToken
+      }, function (result) {
+        console.log(result);
+      });
+
+    }, { scope: 'pages_show_list,pages_messaging,pages_manage_metadata,leads_retrieval,ads_management,pages_read_engagement,pages_manage_ads' });
+    
   }
 });
 

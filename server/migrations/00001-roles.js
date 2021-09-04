@@ -6,6 +6,8 @@ Migrations.add({
     Roles.createRole('roles.owner');
     Roles.createRole('roles.agent');
     Roles.createRole('roles.customer');
+    Roles.createRole('roles.customerAgent');
+    Roles.createRole('roles.customerUser');
 
     const userId = Accounts.createUser({
       email: 'admin@bordo.io',
