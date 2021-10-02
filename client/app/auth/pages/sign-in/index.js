@@ -11,7 +11,7 @@ Template.authPageSignIn.events({
       Loading.hide();
 
       if (error) {
-        console.log(error);
+        ErrorHandler.show(error);
         return;
       }
 

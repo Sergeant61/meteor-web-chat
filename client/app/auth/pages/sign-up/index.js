@@ -11,6 +11,11 @@ Template.authPageSignUp.events({
     const password = event.target.password.value;
     const passwordAgain = event.target.passwordAgain.value;
 
+    if (password != passwordAgain) {
+      // TODO error message create
+      return;
+    }
+
     const obj = {
       email: emailAddress,
       password: password,
@@ -20,11 +25,11 @@ Template.authPageSignUp.events({
       }
     };
 
-    Accounts.createUser(obj, function (error, result) {
+    Loading.show();
+    Meteor.call('auth.users.customerCreate', obj, function (error, result) {
       Loading.hide();
-
       if (error) {
-        console.log(error);
+        ErrorHandler.show(error);
         return;
       }
 
@@ -35,6 +40,7 @@ Template.authPageSignUp.events({
       } else {
         FlowRouter.go('public.home');
       }
+
     });
   }
 });

@@ -1,41 +1,39 @@
 <template name="publicComponentNavbar">
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">To Do App</a>
+      <a class="navbar-brand" href="#">Webchat</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link active" aria-current="page" href="/">Ana sayfa</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/todos">Todos</a>
+            <a class="nav-link" href="{{pathFor 'user.products'}}">Ürünler</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
+            <a class="nav-link" href="{{pathFor 'user.about'}}">Hakkında</a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="/chat">Chat</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="/classes">Sınıflar</a>
-          </li>
-
         </ul>
 
         {{#if currentUser}}
-          <a href="#" class="btn btn-danger brd-logout me-2">Exit</a>
+          <a href="#" class="btn btn-danger brd-logout me-2">Çıkış</a>
 
-          <a href="{{pathFor 'user.myProfile'}}" class="btn btn-success">My Proile</a>
+          {{#if isInRole 'roles.customer'}}
+            <a href="{{pathFor 'customer.dashboard'}}" class="btn btn-success">Gösterge paneli</a>
+          {{/if}}
+
+          {{#if isInRole 'roles.admin'}}
+            <a href="{{pathFor 'admin.dashboard'}}" class="btn btn-success">Admin</a>
+          {{/if}}
+
         {{else}}
-          <a href="{{pathFor 'auth.signIn'}}" class="btn btn-outline-success">Sign-in</a>
+          <a href="{{pathFor 'auth.signIn'}}" class="btn btn-outline-success">Giriş yap</a>
         {{/if}}
 
       </div>

@@ -1,15 +1,8 @@
 <template name="publicLayoutDefault">
 
-  <div class="publicLayoutDefault d-flex flex-column min-vh-100">
-    {{> publicComponentNavbar}}
-
-    <div class="flex-fill">
-      <div class="h-100">
-        {{> Template.dynamic template=page}}
-      </div>
-    </div>
-
+  <div class="publicLayoutDefault d-flex flex-column min-vh-100 bg-light">
+    {{> Template.dynamic template=page}}
   </div>
-  
+
   {{> Loading}}
 </template>

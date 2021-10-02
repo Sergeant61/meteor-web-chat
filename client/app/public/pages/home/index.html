@@ -1,90 +1,15 @@
 <template name="publicPageHome">
 
-  {{#let _todos=(state.get 'todos') _notFound=(state.get 'notFound') _number=number.get}}
+  <div class="flex-grow-0">
+    {{> publicComponentNavbar}}
+  </div>
 
-    <div class="container py-4">
+  <div class="flex-grow-1 publicPageHome">
 
-      <div class="d-flex">
-        <h4>Merhaba Meteor.js {{name}}</h4>
+  </div>
 
-        <div class="ms-auto">
-          <div class="input-group mb-3">
-            <input type="search" class="form-control brd-todo-search" placeholder="Ara">
-            <span class="input-group-text" id="basic-addon1">@</span>
-          </div>
-        </div>
+  <div class="flex-grow-0">
 
-        <div class="ms-2">
-          <select class="form-select brd-todo-sorting" >
-            <option value="1">A'dan Z'ye İsim</option>
-            <option value="2">Z'dan A'ye İsim</option>
-            <option value="3">A'dan Z'ye Açıklama</option>
-            <option value="4">Z'dan A'ye Açıklama</option>
-          </select>
-        </div>
-
-        <div class="ms-2">
-          <button class="btn btn-success btn-sm brd-login" >Login</button>
-
-
-          <button class="btn btn-success btn-sm float-end" data-bs-toggle="modal" data-bs-target="#brdPublicModalTodoCreateModal">Ekle</button>
-        </div>
-      </div>
-
-      <p>{{_number}}</p>
-
-      <div class="row g-3">
-
-        {{#each _todos}}
-
-          <div class="col-sm-12 col-md-6 col-lg-4">
-
-            {{> publicComponentTodoCard todo=this number=number}}
-
-          </div>
-
-        {{/each}}
-
-        {{#if _notFound}}
-          <div class="py-4 text-center">
-            <h4>Sonuç bulunamadı</h4>
-            <p>Aradığınız kriterlere göre sonuç bulunamadı.</p>
-          </div>
-        {{/if}}
-
-        <div class="col-sm-12 my-5 py-3">
-          {{> componentPagination paginationState=pagination}}
-        </div>
-
-
-      </div>
-    </div>
-
-  {{/let}}
-
-  {{> publicModalTodoCreate}}
-  {{> publicModalTodoUpdate}}
-
-  <!-- {{#if eq 1 2}}
-
-{{else}}
-
-{{/if}}
-
-{{#unless eq 1 2}}
-
-{{/unless}}
-
-{{#with todos}}
-
-<h4>Merhaba Meteor.js {{name}}</h4>
-
-{{/with}}
-
-{{#if todos}}
-
-<h4>Merhaba Meteor.js {{todos.name}}</h4>
-
-{{/if}} -->
+  </div>
 
 </template>
