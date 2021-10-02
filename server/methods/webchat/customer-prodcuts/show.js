@@ -1,9 +1,9 @@
 import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
-  name: 'webchat.customerProdcut.show',
+  name: 'webchat.customerProduct.show',
   // mixins: [RoleMixin],
-  // roles: ['permissions.customerProdcut.read'],
+  // roles: ['permissions.customerProduct.read'],
   validate: new SimpleSchema({
     _id: SimpleSchema.RegEx.Id,
   }).validator(),
@@ -11,7 +11,7 @@ new ValidatedMethod({
     this.unblock();
     const { _id } = data;
 
-    return CustomerProdcuts.findOne({
+    return CustomerProducts.findOne({
       _id: _id
     });
   }

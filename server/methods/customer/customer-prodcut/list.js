@@ -1,7 +1,7 @@
 import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
-  name: 'webchat.customerProduct.list',
+  name: 'customer.customerProduct.list',
   // mixins: [RoleMixin],
   // roles: ['permissions.customerProduct.read'],
   validate: new SimpleSchema({
@@ -11,6 +11,14 @@ new ValidatedMethod({
     this.unblock();
     const { options } = data
 
-    return FetchByIndex(CustomerProducts, {}, options, null);
+    const result = FetchByIndex(CustomerProducts, {}, options, null);
+
+    result.data = result.data.map(customerProduct => {
+      customerProduct.product = Products.findOne({ _id: customerProduct.productId });
+
+      return customerProduct;
+    });
+
+    return result;
   }
 });

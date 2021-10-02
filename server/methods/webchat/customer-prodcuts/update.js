@@ -1,22 +1,22 @@
 import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
-  name: 'webchat.customerProdcut.update',
+  name: 'webchat.customerProduct.update',
   // mixins: [RoleMixin],
-  // roles: ['permissions.customerProdcut.update'],
+  // roles: ['permissions.customerProduct.update'],
   validate: new SimpleSchema({
     _id: SimpleSchema.RegEx.Id,
-    customerProdcut: CustomerProdcutSchema
+    customerProduct: CustomerProductSchema
   }).validator(),
   run: function (data) {
     this.unblock();
-    const { _id, customerProdcut } = data
+    const { _id, customerProduct } = data
 
-    const id = CustomerProdcuts.update({ _id: _id }, {
-      $set: customerProdcut
+    const id = CustomerProducts.update({ _id: _id }, {
+      $set: customerProduct
     });
 
-    return CustomerProdcuts.findOne({ _id: id });
+    return CustomerProducts.findOne({ _id: id });
   }
 });
 

@@ -1,0 +1,63 @@
+<template name="customerPageProducts">
+
+  {{#let _customerProducts=(state.get 'customerProducts')}}
+
+    <div class="flex-grow-0">
+      {{> customerComponentNavbar title="Ürünlerim"}}
+    </div>
+
+    <div class="flex-grow-0 d-flex p-2">
+      <span></span>
+
+      <div class="ms-auto">
+      </div>
+
+      <div class="ms-2">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#brdCustomerModalCustomerProductCreateModal"><i class="fas fa-plus-square fa-fw"></i> Ekle</button>
+      </div>
+    </div>
+
+    <div class="flex-grow-1 customerPageProducts p-2">
+
+      <div class="table-responsive flex-fill">
+        <table id="brdModulPersonelPageMenusTable" class="table text-nowrap text-black-50">
+          <thead class="bg-light">
+            <tr>
+              <th class="rounded-start border-bottom-0"> Adı </th>
+              <th class="border-bottom-0">Ürün adı</th>
+              <th class="border-bottom-0">Oluşturma tarihi</th>
+              <th class="rounded-end border-bottom-0 text-end">#</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each _customerProducts}}
+              <tr>
+                <td class="text-dark">{{name}}</td>
+                <td>{{product.name}}</td>
+                <td>{{formatDateTime createdAt}}</td>
+                <td class="text-end">
+                  {{> publicComponentControlMenu id='customerProduct' updateRole='' deleteRole='' isDetailClose=true data=this}}
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+
+        {{#if state.get 'notFound'}}
+          <p class="fs-3 text-muted text-center py-4">Sonuç Bulunamadı.</p>
+        {{/if}}
+
+        {{> componentPagination paginationState=pagination}}
+      </div>
+
+    </div>
+
+    <div class="flex-grow-0">
+
+    </div>
+
+  {{/let}}
+
+  {{> customerModalCustomerProductCreate}}
+
+</template>

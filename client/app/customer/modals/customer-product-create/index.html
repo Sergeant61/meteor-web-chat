@@ -1,0 +1,43 @@
+<template name="customerModalCustomerProductCreate">
+  {{#let _data=(appUtil.temp.get 'customerProduct') _products=(state.get 'products')}}
+    <div class="modal" id="brdCustomerModalCustomerProductCreateModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content py-1 brd-loading-modal">
+
+          <div class="modal-header d-flex justify-content-center border-bottom-0">
+            <h4 class="fw-bolder">Ürün {{#if _data}}düzenle{{else}}ekle{{/if}}</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body mx-md-2">
+            <form id="brdCustomerModalCustomerProductCreateForm">
+
+              <div class="form-floating mb-2">
+                <select class="form-select" id="brdCustomerModalCustomerProductCreateModal_products" name="productId">
+                  {{#each _products}}
+                    {{#if eq _id _data.productId}}
+                      <option value="{{_id}}" selected>{{name}}</option>
+                    {{else}}
+                      <option value="{{_id}}">{{name}}</option>
+                    {{/if}}
+                  {{/each}}
+                </select>
+                <label for="brdCustomerModalCustomerProductCreateModal_products">Ürünler</label>
+              </div>
+
+              <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="brdCustomerModalCustomerProductCreateModal_name" name="name" placeholder=" " required value="{{_data.name}}" autocomplete="off">
+                <label for="brdCustomerModalCustomerProductCreateModal_name">Ad</label>
+              </div>
+
+            </form>
+          </div>
+
+          <div class="modal-footer border-top-0">
+            <button type="submit" form="brdCustomerModalCustomerProductCreateForm" class="btn btn-primary text-white">{{#if _data}}Düzenle{{else}}Ekle{{/if}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/let}}
+</template>

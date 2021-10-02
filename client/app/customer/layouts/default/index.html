@@ -1,0 +1,26 @@
+<template name="customerLayoutDefault">
+
+  <div class="customerLayoutDefault layout">
+    <nav id="sidebar" class="shadow-sm bg-white">
+      <div class="text-center py-5">
+        <a href="{{pathFor 'public.home'}}">
+          <img src="/assets/svg/logo.svg" width="100">
+        </a>
+      </div>
+
+      <ul class="list-group px-3">
+        <a href="{{pathFor 'customer.dashboard'}}" class="list-group-item border-0 my-1 rounded-3 fw-bold {{#if eq currentRouteName 'customer.dashboard'}}text-white bg-primary{{else}}text-black-50{{/if}}"><i class="far fa-chart-line fa-fw me-2"></i> Gösterge Paneli</a>
+        <a href="{{pathFor 'customer.products'}}" class="list-group-item border-0 my-1 rounded-3 fw-bold {{#if eq currentRouteName 'customer.products'}}text-white bg-primary{{else}}text-black-50{{/if}}"><i class="far fa-chart-line fa-fw me-2"></i> Ürünlerim</a>
+      </ul>
+
+    </nav>
+
+    <div id="content" class="d-flex flex-column min-vh-100 bg-light">
+
+      {{> Template.dynamic template=page}}
+
+    </div>
+  </div>
+
+  {{> Loading}}
+</template>

@@ -1,9 +1,9 @@
 import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
-  name: 'webchat.customerProduct.list',
+  name: 'customer.product.list',
   // mixins: [RoleMixin],
-  // roles: ['permissions.customerProduct.read'],
+  // roles: ['permissions.product.read'],
   validate: new SimpleSchema({
     options: { type: QueryOptionsSchema, optional: true }
   }).validator(),
@@ -11,6 +11,6 @@ new ValidatedMethod({
     this.unblock();
     const { options } = data
 
-    return FetchByIndex(CustomerProducts, {}, options, null);
+    return FetchByIndex(Products, {}, options, null);
   }
 });

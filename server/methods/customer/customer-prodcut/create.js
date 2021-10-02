@@ -1,7 +1,7 @@
 import SimpleSchema from 'simpl-schema';
 
 new ValidatedMethod({
-  name: 'webchat.customerProduct.create',
+  name: 'customer.customerProduct.create',
   // mixins: [RoleMixin],
   // roles: ['permissions.customerProduct.create'],
   validate: new SimpleSchema({
