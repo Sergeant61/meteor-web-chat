@@ -1,0 +1,31 @@
+<template name="productComponentNavbar">
+  {{#let _customerProduct=customerProduct}}
+
+    <nav class="productComponentNavbar navbar bg-secondary py-2 text-white shadow-lg">
+      <div class="container">
+
+        <div class="d-flex flex-fill">
+          <div class="flex-grow-0 me-3">
+            <a class="text-decoration-none text-white" href="#">
+              <div class="p-0 d-flex align-items-center justify-content-center">
+                <img src="/assets/svg/logo.svg" width="45" />
+              </div>
+            </a>
+          </div>
+
+          <div class="flex-grow-1">
+            <h5 class="fw-bold mb-0"> {{_customerProduct.name}} </h5>
+            <span>{{_customerProduct.product.name}}</span>
+          </div>
+
+          <div class="flex-grow-0 align-self-center">
+            {{#if room}}
+              <button class="btn btn-danger brd-room-stop"><i class="fas fa-stop fa-lg text-white"></i></button>
+            {{/if}}
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  {{/let}}
+</template>

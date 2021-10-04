@@ -1,0 +1,9 @@
+.productComponentNavbarBottom {
+  a {
+    color: var(--bs-gray);
+
+    .active {
+      color: var(--bs-primary);
+    }
+  }
+}

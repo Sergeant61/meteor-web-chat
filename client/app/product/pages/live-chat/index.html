@@ -1,0 +1,50 @@
+<template name="productPageLiveChat">
+  {{#let _room=room _userId=currentUser._id}}
+
+    <div class="flex-grow-0">
+      {{> productComponentNavbar}}
+    </div>
+
+    <div class="flex-grow-1 productPageLiveChat d-flex flex-column gap-2 p-2">
+
+      {{#if _room}}
+
+        {{#each messages}}
+
+          <div class="d-flex">
+            <div class="flex-grow-0" style="width:100px">
+
+            </div>
+
+            <div class="flex-grow-1 bg-white p-1 rounded-3 shadow-sm">
+              <div>
+                <span class="small"> {{payload.text}}</span>
+              </div>
+
+              <span class="small text-muted float-end"> {{formatDateTime createdAt}}</span>
+            </div>
+          </div>
+
+        {{/each}}
+
+
+      {{else}}
+        <div class="py-5 text-center">
+          <h3>Live Chat</h3>
+          <p>Görüşme başlatmak için lütfen tıklayınız</p>
+          <button class="btn btn-primary brd-room-start">BAŞLAT</button>
+        </div>
+      {{/if}}
+
+    </div>
+
+    {{#if _room}}
+      <div class="flex-grow-0">
+        {{> productComponentNavbarBottom}}
+      </div>
+    {{/if}}
+
+
+  {{/let}}
+
+</template>

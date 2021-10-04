@@ -43,9 +43,9 @@ Template.customerPageProducts.onRendered(function () {
       }
     };
 
-    LoadingLine.show()
+    Loading.show()
     Meteor.call('customer.customerProduct.list', obj, function (error, result) {
-      LoadingLine.hide()
+      Loading.hide()
 
       if (error) {
         ErrorHandler.show(error)
@@ -78,9 +78,9 @@ Template.customerPageProducts.events({
     SwalUtil.deleteAreYouSure(function (r) {
       if (r.isConfirmed) {
 
-        LoadingLine.show()
+        Loading.show()
         Meteor.call('customer.customerProduct.delete', { _id: controlMenu.data._id }, function (error, result) {
-          LoadingLine.hide()
+          Loading.hide()
 
           if (error) {
             ErrorHandler.show(error)
