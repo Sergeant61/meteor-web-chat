@@ -1,11 +1,66 @@
 <template name="customerPageLiveChats">
-  
+    {{#let _customers=(state.get 'customers')}}
+
+        <div class="flex-grow-0">
+            {{> customerComponentNavbar title="Live-Chats"}}
+        </div>
+        <div class="p-2 m-2">
+
+            <div class="row">
+
+                <div class="col-3 ">
+                    <ul class="list-group py-0">
+                        <!-- {{#each _customers}} -->
+                        <a href="#" class="list-group-item text-decoration-none">Name</a>
+                        <!-- <a href="#" class="list-group-item text-decoration-none">{{name}}</a> -->
+                        <!-- {{/each}} -->
+                    </ul>
+                </div>
 
 
+                <div class="col-9">
+
+                    <!-- {{#with _customers}} -->
+                    <div class="border mb-2 p-2">
+                        <h4>Name</h4>
+                    </div>
+                    <!-- {{/with}} -->
+
+                    <div class="border mb-2 p-2 overflow-auto" style="height: 500px;">
+
+                        <ul class="list-group">
+                            <!-- {{#each messages}} -->
+                            <li class=" border-0">
+
+                                <div style="width: 300px;"
+                                    class="{{#if eq currentUser._id userId}}float-end{{/if}} border p-2 rounded">
+                                    <p>Mesaj</p>
+                                    <div>
+                                        <span class="float-end small text-muted">{{formatDateTime createdAt}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- {{/each}} -->
+                        </ul>
+
+                    </div>
+
+                    <!-- {{#if currentUser}} -->
+                    <!-- {{#with _customers}} -->
+                    <form class="d-flex">
+                        <input type="text" class="form-control" id="brdCustomerPageLiveChatsMessage" name="message"
+                            placeholder="Message">
+                        <button type="submit" form="brdCustomerPageLiveChatsMessageCreateForm"
+                            class="btn btn-primary ms-2">Send</button>
+                    </form>
+                    <!-- {{/with}} -->
+                    <!-- {{/if}} -->
+
+                </div>
+
+            </div>
 
 
-
-
-
-  
+        </div>
+    {{/let}}
 </template>
