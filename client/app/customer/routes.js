@@ -19,3 +19,10 @@ routesAuth.route('/customer-products', {
     this.render('customerLayoutDefault', { page: 'customerPageProducts' });
   }
 });
+
+routesAuth.route('/customer-live-chats', {
+  name: 'customer.live-chats',
+  action: function (params, queryParams) {
+    this.render('customerLayoutDefault', { page: 'customerPageLiveChats' });
+  }
+});
